@@ -1,0 +1,6 @@
+3Blockz/.objs
+*.cbplugin
+.vscode
+*.gc*
+*.o
+testPlugin

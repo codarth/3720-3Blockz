@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
+<CodeBlocks_project_file>
+	<FileVersion major="1" minor="6" />
+	<Project>
+		<Option title="3Blockz" />
+		<Option pch_mode="2" />
+		<Option compiler="gcc" />
+		<Build>
+			<Target title="Production">
+				<Option output="ThreeBlockz" prefix_auto="1" extension_auto="1" />
+				<Option object_output=".objs/default" />
+				<Option type="3" />
+				<Option compiler="gcc" />
+				<Compiler>
+					<Add option="`pkg-config --cflags codeblocks`" />
+					<Add option="`wx-config --cflags`" />
+				</Compiler>
+				<Linker>
+					<Add option="`pkg-config --libs codeblocks`" />
+					<Add option="`wx-config --libs`" />
+				</Linker>
+				<ExtraCommands>
+					<Add after="rm -f ThreeBlockz.zip" />
+					<Add after="mv libThreeBlockz.so ThreeBlockz.so" />
+					<Add after="zip -j9 ThreeBlockz.zip manifest.xml" />
+					<Add after="zip -j9 ThreeBlockz.cbplugin ThreeBlockz.so ThreeBlockz.zip" />
+					<Add after="rm -f ThreeBlockz.so" />
+					<Add after="rm -f ThreeBlockz.zip" />
+					<Mode after="always" />
+				</ExtraCommands>
+			</Target>
+			<Target title="Test">
+				<Option output="testPlugin" prefix_auto="1" extension_auto="1" />
+				<Option type="1" />
+				<Option compiler="gcc" />
+				<Option use_console_runner="0" />
+				<Compiler>
+					<Add option="`pkg-config --cflags codeblocks`" />
+					<Add option="`wx-config --cflags `" />
+					<Add directory="/usr/src/gmock" />
+				</Compiler>
+				<Linker>
+					<Add option="`pkg-config --libs codeblocks`" />
+					<Add option="`wx-config --libs `" />
+					<Add option="-lgtest" />
+					<Add directory="/usr/include/gmock" />
+				</Linker>
+			</Target>
+		</Build>
+		<VirtualTargets>
+			<Add alias="All" targets="Production;" />
+		</VirtualTargets>
+		<Compiler>
+			<Add option="-std=c++1y" />
+			<Add option="-fPIC" />
+		</Compiler>
+		<Linker>
+			<Add option="-Wl,--no-undefined" />
+		</Linker>
+		<Unit filename="include/EqOpOverloadUI.h" />
+		<Unit filename="include/HashFunctionGenerator.h" />
+		<Unit filename="include/OpEqOverloadToolHandler.h" />
+		<Unit filename="include/OpEqOverloadToolProcessor.h" />
+		<Unit filename="include/ParseException" />
+		<Unit filename="include/ParseException.h" />
+		<Unit filename="include/TBToolHandler.h" />
+		<Unit filename="include/TBToolProcessor.h" />
+		<Unit filename="include/ThreeBlockz.h" />
+		<Unit filename="include/ToolProcessorNotFoundException.h" />
+		<Unit filename="include/rapidjson/allocators.h" />
+		<Unit filename="include/rapidjson/document.h" />
+		<Unit filename="include/rapidjson/encodedstream.h" />
+		<Unit filename="include/rapidjson/encodings.h" />
+		<Unit filename="include/rapidjson/error/en.h" />
+		<Unit filename="include/rapidjson/error/error.h" />
+		<Unit filename="include/rapidjson/filereadstream.h" />
+		<Unit filename="include/rapidjson/filewritestream.h" />
+		<Unit filename="include/rapidjson/fwd.h" />
+		<Unit filename="include/rapidjson/internal/biginteger.h" />
+		<Unit filename="include/rapidjson/internal/diyfp.h" />
+		<Unit filename="include/rapidjson/internal/dtoa.h" />
+		<Unit filename="include/rapidjson/internal/ieee754.h" />
+		<Unit filename="include/rapidjson/internal/itoa.h" />
+		<Unit filename="include/rapidjson/internal/meta.h" />
+		<Unit filename="include/rapidjson/internal/pow10.h" />
+		<Unit filename="include/rapidjson/internal/regex.h" />
+		<Unit filename="include/rapidjson/internal/stack.h" />
+		<Unit filename="include/rapidjson/internal/strfunc.h" />
+		<Unit filename="include/rapidjson/internal/strtod.h" />
+		<Unit filename="include/rapidjson/internal/swap.h" />
+		<Unit filename="include/rapidjson/istreamwrapper.h" />
+		<Unit filename="include/rapidjson/memorybuffer.h" />
+		<Unit filename="include/rapidjson/memorystream.h" />
+		<Unit filename="include/rapidjson/msinttypes/inttypes.h" />
+		<Unit filename="include/rapidjson/msinttypes/stdint.h" />
+		<Unit filename="include/rapidjson/ostreamwrapper.h" />
+		<Unit filename="include/rapidjson/pointer.h" />
+		<Unit filename="include/rapidjson/prettywriter.h" />
+		<Unit filename="include/rapidjson/rapidjson.h" />
+		<Unit filename="include/rapidjson/reader.h" />
+		<Unit filename="include/rapidjson/schema.h" />
+		<Unit filename="include/rapidjson/stream.h" />
+		<Unit filename="include/rapidjson/stringbuffer.h" />
+		<Unit filename="include/rapidjson/writer.h" />
+		<Unit filename="manifest.xml" />
+		<Unit filename="src/EqOpOverloadUI.cpp" />
+		<Unit filename="src/HashFunctionGenerator.cpp" />
+		<Unit filename="src/OpEqOverloadToolHandler.cpp" />
+		<Unit filename="src/OpEqOverloadToolProcessor.cpp" />
+		<Unit filename="src/ThreeBlockz.cpp" />
+		<Unit filename="test/TestMain.cpp">
+			<Option target="Test" />
+		</Unit>
+		<Unit filename="wxsmith/EqOpOverloadUI.wxs" />
+		<Unit filename="wxsmith/HashFunctionGenerator.wxs" />
+		<Extensions>
+			<code_completion />
+			<envvars />
+			<lib_finder disable_auto="1" />
+			<debugger />
+			<wxsmith version="1">
+				<resources>
+					<wxDialog wxs="wxsmith/EqOpOverloadUI.wxs" src="EqOpOverloadUI.cpp" hdr="EqOpOverloadUI.h" fwddecl="0" i18n="1" name="EqOpOverloadUI" language="CPP" />
+					<wxDialog wxs="wxsmith/HashFunctionGenerator.wxs" src="HashFunctionGenerator.cpp" hdr="HashFunctionGenerator.h" fwddecl="0" i18n="1" name="HashFunctionGenerator" language="CPP" />
+				</resources>
+			</wxsmith>
+		</Extensions>
+	</Project>
+</CodeBlocks_project_file>
